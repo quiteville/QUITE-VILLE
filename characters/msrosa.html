@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ms. Rosa</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+body{
+  transition: opacity 0.4s ease, filter 0.4s ease;
+}
+.profile{
+max-width:900px;
+margin:auto;
+padding:40px;
+}
+.tv-off{
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    filter: grayscale(100%);
+    transition: all 0.6s ease;
+}
+.tv-off p{
+    color :white
+}
+.tv-container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    cursor:pointer;
+    gap:6px;
+}
+
+.tv-label{
+    font-size:12px;
+    color:#aaa;
+}
+
+.tv-switch{
+    width:80px;
+    height:34px;
+    background:#333;
+    border-radius:50px;
+    position:relative;
+    transition:0.4s;
+}
+
+.tv-knob{
+    width:28px;
+    height:28px;
+    background:white;
+    border-radius:50%;
+    position:absolute;
+    top:3px;
+    left:4px;
+    transition:0.4s;
+}
+.tv-state{
+    font-size:12px;
+    color:#aaa;
+}
+
+.tv-container.active .tv-switch{
+    background:#838383;
+}
+
+.tv-container.active .tv-knob{
+    transform:translateX(44px);
+}
+
+.tv-container.active .tv-state{
+    content:"ON";
+}
+
+.tv-container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px
+}
+
+.tv-label,.tv-state{font-size:.75rem;
+    color:#ddd
+}
+
+.tv-switch{
+    width:70px;
+    height:34px;
+    border-radius:40px;
+    background:#444;
+    position:relative
+}
+
+.tv-knob{position:absolute;
+    left:4px;
+    top:4px;
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:#fff;
+    transition:.3s;
+}
+
+.tv-container.active .tv-switch{
+    background:#888
+}
+
+.tv-container.active .tv-knob{
+    transform:translateX(36px);
+}
+
+.character-image{
+height:420px;
+background:#71448b;
+border-radius:20px;
+margin-bottom:30px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.back{
+display:inline-block;
+margin-bottom:25px;
+text-decoration:none;
+font-weight:bold;
+color:#ffffff;
+}
+
+p{
+margin-top:20px;
+line-height:1.8;
+}
+
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  justify-content: center;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+p{
+padding:20px;
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.15);
+border-radius:22px;
+backdrop-filter:blur(18px)
+}
+
+.gallery{
+    margin-left: 20px;
+}
+
+.main-image img{
+    width:390px;
+    height:350px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:15px;
+}
+
+.thumbnails{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+}
+
+.thumbnails img{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+    cursor:pointer;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.face-button{
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display:inline-block;
+  padding:14px 155px 14px 155px;
+  border-radius:999px;background:#fff;color:#222;font-weight:600;
+  cursor:pointer;
+  transition:all .3s
+}
+
+.all-button {
+  margin: 10px auto;
+  padding: 14px 155px;
+  border-radius: 999px;
+  background: #fff;
+  color: #222;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .3s;
+
+  display: block;
+}
+
+
+.face-features {
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:22px;
+  backdrop-filter:blur(18px);
+  margin: 15px;
+  margin-bottom: 10px;
+  width:fit-content;
+}
+
+
+.darcy-stickers {
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:22px;
+  backdrop-filter:blur(18px);
+  margin: 15px;
+  margin-bottom: 10px;
+  width:fit-content;
+}
+
+.darcy-body {
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:22px;
+  backdrop-filter:blur(18px);
+  margin: 15px;
+  margin-bottom: 10px;
+  width:fit-content;
+}
+
+.darcy-pics {
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:22px;
+  backdrop-filter:blur(18px);
+  margin: 15px;
+  margin-bottom: 10px;
+  width:fit-content;
+}
+
+.face-features h4{
+    margin-left: 20px;
+    margin-top: 30px;
+    color: #fff;
+    }
+
+.darcy-stickers h4{
+    margin-left: 20px;
+    margin-top: 30px;
+    color: #fff;
+    }
+
+.darcy-body h4{
+    margin-left: 20px;
+    margin-top: 30px;
+    color: #fff;
+    }
+
+.darcy-pics h4{
+    margin-left: 20px;
+    margin-top: 30px;
+    color: #fff;
+    }
+
+.charcter-files{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+.charcter-files img{
+    background:#71448b;
+}
+
+#comingSoonMessage{
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%, -10px);
+    background: rgba(30,30,30,.9);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 12px;
+    font-size: 15px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .4s ease, transform .4s ease;
+    z-index: 9999;
+}
+
+#comingSoonMessage.show{
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+
+    <a href="../index.html"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5"/>
+</svg>
+Home</a>
+</div>
+
+<h1>Ms. Rosa</h1>
+
+    <div class="tv-container" id="tvButton">
+
+        <span class="tv-label">Television</span>
+
+        <div class="tv-switch">
+            <div class="tv-knob"></div>
+        </div>
+
+        <span class="tv-state">ON</span>
+
+    </div>
+
+</header>
+
+<div class="profile">
+
+<a class="back" href="../index.html">← Back</a>
+
+<div class="character-image">
+  <img src="../images/ms rosa.png" id="msrosainfo">
+</div>
+
+<h1>Ms. Rosa</h1>
+
+<p>
+الجدة المُحبة للجميع ، متبنية بيردي العصفورة الصغيرة ، تحب فرايزي ولا تنزعج من ضحكته و تحاول دائمًا تهدئة الجد فوفكن.</p>
+
+<p>
+The grandmother who loves everyone and has adopted Birdie The Little Bird , Loves Friezy and not bothered from his laugh, Always tries to calm Vovkin down.
+</p>
+</div>
+
+<div class="charcter-files">
+  <div class="face-features">
+    <div class="gallery">
+
+     <div class="main-image">
+        <img id="mainImg" src="../ms rosa face/msrosa1.png">
+     </div>
+
+     <div class="thumbnails">
+        <img src="../ms rosa face/msrosa2.png" onclick="changeImage(this)">
+        <img src="../ms rosa face/msrosa3.png" onclick="changeImage(this)">
+        <img src="../ms rosa face/msrosa4.png" onclick="changeImage(this)">
+        <img src="../ms rosa face/msrosa5.png" onclick="changeImage(this)">
+        <img src="../ms rosa face/msrosa6.png" onclick="changeImage(this)">
+     </div>
+
+    </div>
+    <h4>Ms. Rosa Face Features</h4>
+   <button class="face-button" onclick="downloadFile('../files/ملامح وجه مس روزا.zip')">DOWNLOAD</button>
+   </div>
+   <div class="darcy-stickers">
+    <div class="gallery">
+
+     <div class="main-image">
+        <img id="mainImg" src="../images/coming soon.png">
+     </div>
+
+     <div class="thumbnails">
+        <img src="../images/coming soon.png" onclick="changeImage(this)">
+     </div>
+
+    </div>
+    <h4>Ms. Rosa stickers</h4>
+   <button class="face-button" onclick="comingSoon()">DOWMLOAD</button>
+
+   <div id="comingSoonMessage">قلنا لك قريبًا ليه الإستعجال ؟</div>
+   </div>
+
+      <div class="darcy-body">
+    <div class="gallery">
+
+     <div class="main-image">
+        <img id="mainImg" src="../images/مس روزا واقفة.png">
+     </div>
+
+     <div class="thumbnails">
+        <img src="../images/قطع مس روزا.png" onclick="changeImage(this)">
+        <img src="../images/MS ROSA COLORS PALETTE.png" onclick="changeImage(this)">
+     </div>
+
+    </div>
+    <h4>Ms. Rosa body</h4>
+   <button class="face-button" onclick="downloadFile('../files/جسم مس روزا.zip')">DOWNLOAD</button>
+   </div>
+
+         <div class="darcy-pics">
+    <div class="gallery">
+
+     <div class="main-image">
+        <img id="mainImg" src="../images/مس روزا الشتاء.png">
+     </div>
+
+     <div class="thumbnails">
+        <img src="../images/مس روزا جالسة.png" onclick="changeImage(this)">
+     </div>
+
+    </div>
+    <h4>Ms. Rosa pictures</h4>
+   <button class="face-button" onclick="downloadFile('../files/صور مس روزا.zip')">DOWNLOAD</button>
+   </div>
+   
+   <button class="all-button" onclick="downloadFile('../files/ملفات مس روزا.zip')">DOWNLOAD ALL MS. ROSA'S FILES</button>
+</div>
+
+<script src="../script.js"></script>
+
+</body>
+</html>
