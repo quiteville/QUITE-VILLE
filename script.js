@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (msrosaImg) {
                 msrosaImg.src = isOff
-                    ? "images/msrosa-off.png"
+                    ? "ms rosa-off.png"
                     : "images/msrosa.png";
             }
 
